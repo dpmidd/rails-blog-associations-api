@@ -1,5 +1,6 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :title, :id
-  has_one :user
-  has_many :comments
+  attributes :id, :title, :body
+
+  has_one :user, except:  [:posts, :comments]
+  has_many :comments, except: [:post]
 end

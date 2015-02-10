@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
   def index
-    render json: User.all
+    render json: User.all, except: [:posts, :comments]
   end
 
   def show
-    render json: Post.find(params[:id])
+    user = User.find(params[:id])
+    render json: user
   end
 end
